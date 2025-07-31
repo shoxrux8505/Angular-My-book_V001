@@ -1,0 +1,16 @@
+<div class="card-wrapper">
+  <nz-card nzBordered="true" class="author-detail-card">
+    <div class="author-header">
+      <img [src]="baseUrl+'/AuthorImage/'+author?.picture_url" alt="{{ author?.full_name }}" class="author-image"/>
+      <div class="author-info">
+        <h2>{{ author?.full_name }}</h2>
+        <nz-tag nzColor="blue">{{ author?.country?.name }}</nz-tag>
+        <p><strong>Birth:</strong> {{ author?.birth_date }}</p>
+      </div>
+    </div>
+
+    <nz-typography>
+      <p class="bio">{{ author?.bio_wikipediya }}</p>
+    </nz-typography>
+  </nz-card>
+</div>

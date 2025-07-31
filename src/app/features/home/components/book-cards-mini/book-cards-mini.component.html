@@ -1,0 +1,36 @@
+<ng-container *ngIf="bookId; else bookList">
+  <div class="book-card">
+    <div [routerLink]="['/book-detail', data?.id]">
+      <img [src]="getBookImageUrl(data)" alt="{{ data?.name }}" class="data-cover"/>
+      <h3>{{ data?.name }}</h3>
+      <p>{{ data?.author_name }}</p>
+    </div>
+    <button (click)="data && toggleFavorite(data)" class="favorite-button">
+      <i [class]="data ? getBookmarkIcon(data) : 'fa-regular fa-bookmark'"></i>
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #bookList>
+  <div class="books-list" *ngIf="books.length !== 0; else noData">
+    <div class="book-card" *ngFor="let book of books">
+      <div [routerLink]="['/book-detail', book.id]">
+        <img [src]="getBookImageUrl(book)" alt="{{ book.name }}" class="book-cover"/>
+        <h3><p>{{ book.name }}</p></h3>
+        <p>{{ book.author_name }}</p>
+        <div class="book-metadata">
+          <span class="book-category" *ngIf="book.category_name">{{ book.category_name }}</span>
+          <span class="book-type" *ngIf="book.type">{{ book.type }}</span>
+        </div>
+      </div>
+      <button (click)="removeFromFavorites($event, book)" class="favorite-button">
+        <i [class]="getBookmarkIcon(book)"></i>
+      </button>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <nz-empty title="Bu yerda tanlangan kitoblar o'rin oladi."
+              nzNotFoundContent="Tanlangan kitoblar mavjud emas"></nz-empty>
+  </ng-template>
+</ng-template>

@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin-bottom: 20px;
+}
+
+.container {
+  // max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content {
+  padding: 50px 0;
+  margin-top: 50px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.footer-section h2 span {
+  color: #007bff;
+}
+
+.footer-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin-top: 10px;
+}
+
+.footer-section.links ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-section.links ul li {
+  width: 50%; /* Ikkita qator yaratish uchun kenglik */
+  margin-bottom: 10px;
+}
+
+.footer-section.links ul li a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section.links ul li a:hover {
+  color: #007bff;
+}
+
+
+.social-media h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: #333;
+  font-size: 20px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #888;
+  border-top: 1px solid #ddd;
+  margin: 40px 0;
+}
+
+.footer-bottom p {
+  margin: 0;
+}

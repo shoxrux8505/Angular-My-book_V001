@@ -1,0 +1,79 @@
+<main class="site-main">
+  <section class="intro-section" id="intro">
+    <div class="container">
+      <div class="intro">
+        <!-- Left side text content -->
+        <div class="intro-text">
+          <h2>Har soha va <br>zamonning <br> yetakchi kitoblari</h2>
+          <!-- <p>Our most popular and trending <strong>On.Book</strong> perfect.<br> Not sure what to read now next reading mood perfectly.</p> -->
+          <button [routerLink]="['/all-books']">Barchasini ko'rish</button>
+        </div>
+
+        <!-- Right side book list -->
+        <div class="intro-card">
+          <ul class="intro-list">
+            <li class="intro-item" [routerLink]="['/book-detail', book?.id]" *ngFor="let book of topBooks">
+              <div class="intro-wrapper">
+                <img [src]="baseUrl + book?.imagePath" [alt]="book?.title">
+              </div>
+              <div>
+                <h3>{{ book?.title }}</h3>
+                <p>{{ book?.authors?.[0]?.firstName }} {{ book?.authors?.[0]?.lastName }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="offers-card-section" id="books">
+    <div class="container">
+      <div class="intro-card offers-card">
+        <h2>Adabiyotlar</h2>
+        <ul class="intro-list">
+          <li class="intro-item offers-card" *ngFor="let category of randomCategories">
+            <div class="img-wrapper">
+              <ng-container *ngFor="let img of topBooks | randomImage:4">
+                <img *ngIf="img" [routerLink]="['/book-detail', img?.id]" [src]="getBookImageUrl(img)" [alt]="img?.title">
+              </ng-container>
+            </div>
+            <div>
+              <p>{{ category?.name }}</p>
+            </div>
+          </li>
+        </ul>
+        <button [routerLink]="['/all-categories']" [queryParams]="{categoryId: 14}">Barchasini ko'rish</button>
+      </div>
+    </div>
+  </section>
+
+  <app-carusel
+    [images]="carouselImages"
+    [interval]="5000"
+  ></app-carusel>
+
+  <section class="authors-section" id="authors">
+    <div class="wrapper container">
+      <h2>Muallif</h2>
+      <a [routerLink]="['/all-authors']" class="see-all">Barchasini ko'rish</a>
+    </div>
+    <div class="author">
+      <div class="container authors">
+        <ng-container *ngFor="let author of authors | randomImage:2">
+          <div class="author-card" [routerLink]="['/author-detail', author?.id]">
+            <div class="author-image">
+              <img [src]="baseUrl + author?.imagePath" alt="{{ author?.firstName }} {{ author?.lastName }}"/>
+            </div>
+            <div class="author-info">
+              <div class="name-wrapper">Ismi: <h3 class="author-name">{{ author?.firstName }} {{ author?.lastName }}</h3></div>
+              <p class="author-about">Muallif haqida:</p>
+              <p><strong>Shahar:</strong> {{ author?.city }}, {{ author?.country }}</p>
+              <p class="bio">{{ author?.about | slice:0:150 }}...</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+
+</main>

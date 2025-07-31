@@ -1,0 +1,306 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-section {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+  padding-top: 120px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 4px solid #007bff;
+  transition: transform 0.3s ease;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.profile-info .bio {
+  font-size: 18px;
+  color: #555;
+  margin-top: 10px;
+  max-width: 600px;
+}
+
+.edit-profile-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn:hover {
+  background-color: #0056b3;
+}
+
+.favorite-books {
+  margin-top: 50px;
+}
+
+.favorite-books h2 {
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.books-list {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  width: 180px;
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.book-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.book-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.book-card h3 {
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.book-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.color-red{
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+
+.all-books-container {
+  text-align: center;
+  padding: 20px 0;
+  padding-top: 100px;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .book-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .book-card {
+    position: relative;
+    width: 180px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+
+    .book-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 10px 0 5px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #555;
+    }
+  }
+
+  .favorite-button {
+    color: white;
+    border: none;
+    border-radius: 4px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    i{
+      font-size: large;
+
+
+      // &:last-child{
+      //   display: none
+      // }
+    }
+
+  }
+
+  .favorite-button:hover {
+    i:hover {
+      color: royalblue;
+    }
+  }
+
+  // .favorite-button:focus {
+    // i{
+      // &:first-child{
+      //   display: none;
+      // }
+
+      // &:last-child{
+      //   color: red;
+      //   display: block;
+      // }
+    // }
+  // }
+
+}
+
+
+.favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: royalblue;
+  transition: transform 0.2s ease-in-out;
+}
+
+.favorite-button:hover {
+  transform: scale(1.2);
+}
+
+.fa-regular.fa-bookmark {
+  color: #ccc;
+}
+
+.fa-solid.fa-bookmark {
+  color: royalblue;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white; /* Tugma orqasiga oq fon */
+  border: none;
+  border-radius: 5px; /* Doira shakli */
+  cursor: pointer;
+  z-index: 10;
+  padding: 10px 8px;
+  font-size: 18px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Yengil soya */
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.favorite-button i {
+  color: #ccc; /* Saqlanmagan holatda tugma rang */
+  transition: color 0.3s ease;
+}
+
+.favorite-button:hover {
+  transform: scale(1.2); /* Hoverda kattalashish */
+  // background: rgba(255, 0, 0, 0.2); /* Hoverda tugma orqasida qizil fon */
+}
+
+.favorite-button .fa-solid {
+  color: royalblue; /* Saqlangan holatda rang */
+}
+
+.favorite-button .fa-regular {
+  color: #666; /* Saqlanmagan holatda rang */
+}
+
+.book-card {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-books {
+  margin-top: 50px;
+}

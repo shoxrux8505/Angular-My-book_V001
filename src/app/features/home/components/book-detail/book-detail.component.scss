@@ -1,0 +1,294 @@
+.container{
+  padding-top: 150px;
+}
+
+.book-detail-container {
+  // max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
+
+  .book-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+
+
+    .book-cover {
+      width: 35%;
+      height: 380px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-right: 20px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .book-info {
+      max-width: 600px;
+      width: 65%;
+      h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+
+      .description {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .book-details {
+        list-style: none;
+        padding: 0;
+
+        li {
+          font-size: 18px;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  .book-content {
+    .tab-navigation {
+      display: flex;
+      margin-bottom: 10px;
+
+      .tab-btn {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: #eee;
+        color: #333;
+        transition: background-color 0.3s ease;
+
+        &.active {
+          background-color: #333;
+          color: #fff;
+        }
+      }
+    }
+
+    .tab-content {
+      .info-tab, .reviews-tab {
+        font-size: 16px;
+        color: #444;
+        background: white;
+        padding: 20px;
+        line-height: 1.6;
+        p{
+          padding: 20px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.read-online-tab {
+  position: relative;
+  iframe {
+    border: none;
+  }
+}
+
+
+
+/* PDF modal */
+.pdf-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Yengil qora fon */
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: #ffffff; /* Oq fon */
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  // max-width: 1200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Yengil soyalar */
+  position: relative;
+}
+
+.btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #333; /* To'q kulrang rang */
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover {
+    color: #e74c3c; /* Qizil rang hover effekti */
+  }
+}
+
+.pdf-open{
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  background: royalblue;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+iframe {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 100vh;
+}
+
+.btn-close,
+.btn-fullscreen,
+.btn-compress {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn-fullscreen {
+  right: 80px;
+}
+
+.btn-compress {
+  right: 130px;
+}
+
+
+.book-card {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.book-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .book-cover {
+    width: 35%;
+    max-width: 250px;
+    height: 350px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .book-info {
+    flex: 1;
+
+    h1 {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .book-details {
+      nz-list-item {
+        font-size: 16px;
+        color: #333;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+.pdf-open {
+  display: block;
+  margin: 10px 0;
+  background: #1890ff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #40a9ff;
+  }
+}
+
+.pdf-expand-btn{
+  position: absolute;
+  top: 25px;
+  right: 50px;
+}
+
+::ng-deep .ant-card-head-title{
+  font-size: 22px;
+}
+
+.info-tab, .reviews-tab {
+  font-size: 16px;
+  color: #444;
+  background: white;
+  padding: 20px;
+  line-height: 1.6;
+  p{
+    padding: 20px;
+    font-size: 20px;
+  }
+}

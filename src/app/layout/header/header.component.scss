@@ -1,0 +1,161 @@
+/* Header container style */
+.site-header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Logo style */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-title{
+    line-height: 16px;
+    font-size: 14px;
+  }
+}
+
+.logo span {
+  color: #0073e6; /* Highlights 'Book' part */
+}
+
+/* Navigation menu style */
+.header-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.header-item a {
+  text-decoration: none;
+  color: #333;
+  font-size: 17px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-item a:hover {
+  color: #0073e6;
+}
+
+/* Search and icons style */
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.icon-group {
+  display: flex;
+  gap: 15px;
+}
+
+.icon-group i {
+  color: #333;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.icon-group i:hover {
+  color: #0073e6;
+}
+
+
+.profile-icon {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 150px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 101;
+  animation: fadeIn 0.3s ease;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px;
+      text-align: center;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

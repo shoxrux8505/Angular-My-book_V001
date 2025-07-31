@@ -1,0 +1,185 @@
+<div class="container">
+  <nz-card nzTitle="{{ book?.name }}" nzBordered>
+    <div class="book-detail-container">
+      <div class="book-header">
+        <img class="book-cover" [src]="getBookImageUrl(book)" alt="{{ book?.name }}" />
+        <div class="book-info">
+<!--          <h1>{{ book?.name }}</h1>-->
+          <nz-list class="book-details">
+            <nz-list-item *ngIf="book?.category_name">
+              <strong>Mamlakat:</strong> {{ book?.category_name }}
+            </nz-list-item>
+            <nz-list-item *ngIf="book?.author_name">
+              <strong>Muallif:</strong> {{ book?.author_name }}
+            </nz-list-item>
+            <nz-list-item *ngIf="book?.length">
+              <strong>Hajmi:</strong> {{ book?.length }} sahifa
+            </nz-list-item>
+            <nz-list-item *ngIf="book?.category_name">
+              <strong>Bo‘lim:</strong> <nz-tag *ngIf=" book?.category_name" nzColor="blue">{{ book?.category_name }}</nz-tag>
+            </nz-list-item>
+          </nz-list>
+        </div>
+      </div>
+    </div>
+  </nz-card>
+
+  <div class="book-content">
+    <nz-tabset>
+      <nz-tab nzTitle="Ma'lumot" (nzSelect)="selectTab('info')">
+        <div *ngIf="activeTab === 'info'" class="info-tab">
+          <p>{{ book?.description }}</p>
+        </div>
+      </nz-tab>
+      <nz-tab nzTitle="Online o'qish" (nzSelect)="selectTab('readOnline')">
+        <div *ngIf="activeTab === 'readOnline'" class="read-online-tab">
+          <ng-container *ngIf="book?.pdf_url; else noPdf">
+            <button nz-button nzType="primary" class="pdf-expand-btn" (click)="openPdfViewer('')">Kattaroq ekranda o'qish</button>
+            <iframe
+              [src]="sanitizer.bypassSecurityTrustResourceUrl(getPdfUrl(book) + '#toolbar=0&navpanes=0&scrollbar=0&zoom=150')"
+              width="100%" height="800px"></iframe>
+          </ng-container>
+          <ng-template #noPdf>
+            <nz-alert nzType="error" nzMessage="Pdf fayl mavjud emas!"></nz-alert>
+          </ng-template>
+        </div>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</div>
+
+<!-- PDF viewer modali -->
+<div *ngIf="showPdfViewer" class="pdf-modal">
+  <div class="modal-content">
+    <button (click)="closePdfViewer()" class="btn-close">✖</button>
+    <!-- Fullscreen tugmasi -->
+    <button (click)="openFullscreen()" class="btn-fullscreen">
+      <i class="fas fa-expand"></i>
+    </button>
+    <button (click)="closeFullscreen()" class="btn-compress">
+      <i class="fas fa-compress"></i>
+    </button>
+    <iframe
+      *ngIf="book?.pdf_url; else noPdf"
+      [src]="
+        sanitizer.bypassSecurityTrustResourceUrl(
+          baseUrl+'/'+book?.pdf_url+'#toolbar=0&navpanes=0&scrollbar=0&zoom=180'
+        )
+      "
+      width="100%"
+      height="800px"
+    ></iframe>
+    <ng-template #noPdf>
+      <p class="no-pdf">Pdf fayl mavjud emas!</p>
+    </ng-template>
+  </div>
+</div>
+
+<!--Eski ko'rinish-->
+<!--<div class="container">-->
+<!--  <div class="book-detail-container">-->
+<!--    <div class="book-header">-->
+<!--      <img class="book-cover" [src]="baseUrl+ '/BookImage/' + (book?.picture_url ? (book.picture_url.startsWith('/') ? book.picture_url.substring(1) : book.picture_url) : '')" alt="{{ book?.name }}"/>-->
+<!--      <div class="book-info">-->
+<!--        <h1><strong style="font-size: 18px">Kitob nomi: </strong>{{ book?.name }}</h1>-->
+<!--        <p class="description"><strong>Haqida: </strong> {{ book?.type }}</p>-->
+
+<!--        <ul class="book-details">-->
+<!--          <li *ngIf="book?.country?.name">-->
+<!--            <strong>Mamlakat:</strong> {{ book?.country?.name }}-->
+<!--          </li>-->
+<!--          <li *ngIf="book?.author?.full_name">-->
+<!--            <strong>Muallif:</strong> {{ book?.author?.full_name }}-->
+<!--          </li>-->
+<!--          <li *ngIf="book?.type">-->
+<!--            <strong>Janr:</strong> {{ book?.type }}-->
+<!--          </li>-->
+
+<!--          <li *ngIf="book?.length">-->
+<!--            <strong>Hajmi:</strong> {{ book?.length }} sahifa-->
+<!--          </li>-->
+<!--          <li *ngIf="book?.category?.name">-->
+<!--            <strong>Bo‘lim:</strong> {{ book?.category?.name }}-->
+<!--          </li>-->
+<!--        </ul>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="book-content">-->
+<!--      <div class="tab-navigation">-->
+<!--        <button-->
+<!--          class="tab-btn"-->
+<!--          [class.active]="activeTab === 'info'"-->
+<!--          (click)="selectTab('info')"-->
+<!--        >-->
+<!--          Ma'lumot-->
+<!--        </button>-->
+<!--        <button-->
+<!--          class="tab-btn"-->
+<!--          [class.active]="activeTab === 'reviews'"-->
+<!--          (click)="selectTab('reviews')"-->
+<!--        >-->
+<!--          Ta'rif-->
+<!--        </button>-->
+<!--        <button-->
+<!--          class="tab-btn"-->
+<!--          [class.active]="activeTab === 'readOnline'"-->
+<!--          (click)="selectTab('readOnline')"-->
+<!--        >-->
+<!--          Online o'qish-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="tab-content">-->
+<!--        <div *ngIf="activeTab === 'info'" class="info-tab">-->
+<!--          <p>{{ book?.description }}</p>-->
+<!--        </div>-->
+<!--        <div *ngIf="activeTab === 'reviews'" class="reviews-tab">-->
+<!--          <nz-alert nzType="error" nzMessage="Ma'lumot mavjud emas!"></nz-alert>-->
+<!--          &lt;!&ndash;          <p *ngIf="book?.description?.length === 0; else data">Hozircha ta'riflar qo'shilmagan!</p>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <ng-template #data>{{ book?.description }}</ng-template>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <p *ngFor="let review of book?.">{{ review }}</p>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div *ngIf="activeTab === 'readOnline'" class="read-online-tab">-->
+<!--          <ng-container *ngIf="book?.pdf_url; else noPdf">-->
+<!--            <button (click)="openPdfViewer('')" class="pdf-open">Kattaroq ekranda o'qish</button>-->
+<!--            <iframe-->
+<!--              [src]="sanitizer.bypassSecurityTrustResourceUrl(baseUrl+'/BookPdf/'+book?.pdf_url+'#toolbar=0&navpanes=0&scrollbar=0&zoom=150')"-->
+<!--              width="100%" height="800px"></iframe-->-->
+<!--          </ng-container>-->
+<!--          <ng-template #noPdf>-->
+<!--            &lt;!&ndash;            <p class="no-pdf"></p>&ndash;&gt;-->
+<!--            <nz-alert nzType="error" nzMessage="Pdf fayl mavjud emas!"></nz-alert>-->
+<!--          </ng-template>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; PDF viewer modali &ndash;&gt;-->
+<!--  <div *ngIf="showPdfViewer" class="pdf-modal">-->
+<!--    <div class="modal-content">-->
+<!--      <button (click)="closePdfViewer()" class="btn-close">✖</button>-->
+<!--      &lt;!&ndash; Fullscreen tugmasi &ndash;&gt;-->
+<!--      <button (click)="openFullscreen()" class="btn-fullscreen">-->
+<!--        <i class="fas fa-expand"></i>-->
+<!--      </button>-->
+<!--      <button (click)="closeFullscreen()" class="btn-compress">-->
+<!--        <i class="fas fa-compress"></i>-->
+<!--      </button>-->
+<!--      <iframe-->
+<!--        *ngIf="book?.pdf_url; else noPdf"-->
+<!--        [src]="-->
+<!--        sanitizer.bypassSecurityTrustResourceUrl(-->
+<!--          baseUrl+'/BookPdf/'+(book?.pdf_url ? (book.pdf_url.startsWith('/') ? book.pdf_url.substring(1) : book.pdf_url) : '')+'#toolbar=0&navpanes=0&scrollbar=0&zoom=180'-->
+<!--        )-->
+<!--      "-->
+<!--        width="100%"-->
+<!--        height="800px"-->
+<!--      ></iframe>-->
+<!--      <ng-template #noPdf>-->
+<!--        <p class="no-pdf">Pdf fayl mavjud emas!</p>-->
+<!--      </ng-template>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+

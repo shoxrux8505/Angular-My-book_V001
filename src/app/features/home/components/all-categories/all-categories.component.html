@@ -1,0 +1,55 @@
+<section class="categories-section">
+  <div class="container">
+    <div class="categories-container" *ngIf="categories; else loading">
+      <!-- Category List with Scrolling Animation -->
+      <div class="scrolling-category-list">
+        <!-- Group categories by type -->
+        <ng-container *ngFor="let typeGroup of filterCategories | groupBy: 'type'">
+          <div class="category-type-header">
+            <h3>{{ typeGroup.key }}</h3>
+          </div>
+          <div class="scrolling-wrapper">
+            <div
+              *ngFor="let category of typeGroup.value"
+              class="category-item"
+              (click)="toggleCategory(category)"
+              [class.selected]="selectedCategory === category.id"
+            >
+              <p>{{ category.name }}</p>
+              <small class="category-type">{{ category.type }}</small>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Category Details -->
+      <div class="category-detail favorite-books" *ngIf="selectedCategory; else noData">
+        <h2>Tanlangan kategoriyaga oid kitoblar</h2>
+        <div class="books-list">
+          <ng-container *ngIf="selectedData && selectedData.length !== 0; else loading">
+            <app-book-cards-mini [books]="selectedData"></app-book-cards-mini>
+          </ng-container>
+
+          <ng-template #loading>
+            <p class="">Hozircha kitoblar qo'shilmagan!</p>
+          </ng-template>
+        </div>
+      </div>
+
+      <ng-template #noData>
+        <div class="category-detail favorite-books">
+          <nz-alert
+            nzType="info"
+            nzMessage="Kategoriya tanlang"
+            nzDescription="Iltimos tegishli kategoriyani tanlang!"
+            nzShowIcon
+          ></nz-alert>
+        </div>
+      </ng-template>
+    </div>
+
+    <ng-template #loading>
+      <p class="categories-container">Loading...</p>
+    </ng-template>
+  </div>
+</section>

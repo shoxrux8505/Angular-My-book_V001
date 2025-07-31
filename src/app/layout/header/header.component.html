@@ -1,0 +1,47 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header">
+      <!-- Logo with enhanced style -->
+      <a class="logo" [routerLink]="['/']" rel="noopener noreferrer">
+        <img style="width: 50px;" src="../../../../../assets/imgs/logo.PNG" alt="">
+        <div class="logo-text">
+          <div class="logo-title">IIV Malaka oshirish instituti</div>
+          <div style="line-height: 20px">
+            MOI.<span>Book</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Navigation menu with improved styles -->
+      <nav class="header-nav">
+        <ul class="header-list">
+          <li class="header-item" [routerLink]="['/']"><a href="javascript:void(0)" (click)="jumpTo('intro')">Bosh sahifa</a></li>
+          <li class="header-item"><a href="javascript:void(0)" (click)="jumpTo('all-institutes-literature')" [routerLink]="['/all-institutes-literature']">Institut adabiyotlari</a></li>
+          <li class="header-item" (click)="jumpTo('categories')" [routerLink]="['/all-categories']" [queryParams]="{categoryId: 14}"><a href="javascript:void(0)">Kategoriyalar</a></li>
+
+          <!-- <li class="header-item" (click)="jumpTo('books')" [routerLink]="['/all-books']"><a href="javascript:void(0)">Barcha kitoblar</a></li> -->
+          <!-- <li class="header-item" (click)="jumpTo('wishlist')"><a href="javascript:void(0)">Wishlist</a></li> -->
+          <li class="header-item"><a href="javascript:void(0) " (click)="jumpTo('aboutus','/')" >Biz haqimizda</a></li>
+          <li class="header-item"><a href="javascript:void(0)" (click)="showReportInfo()">Xatolik bormi?</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search and icons -->
+      <div class="header-actions">
+        <a href="https://lex.uz/" target="_blank"><img style="width: 80px; margin-right: 15px;" src="../../../../../assets/imgs/lex_uz.svg" alt=""></a>
+        <input class="search-input" type="search" placeholder="Kitob qidirish">
+        <div class="icon-group">
+          <!-- <i class="fas fa-bookmark"></i> -->
+          <i class="fas fa-user" (click)="toggleDropdown()"></i>
+        </div>
+      </div>
+      <div class="dropdown-menu" *ngIf="isDropdownVisible">
+        <ul>
+          <li (click)="goToProfile()">Profil</li>
+          <li (click)="logout()">Chiqish</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+

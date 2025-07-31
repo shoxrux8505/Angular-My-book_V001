@@ -1,0 +1,14 @@
+<div class="container">
+  <h2 class="title">All Authors</h2>
+  <div class="cards">
+    <ng-container *ngFor="let author of authors">
+
+      <nz-card [nzBordered]="false" class="author-card" [routerLink]="['/author-detail', author.id]">
+        <img [src]="baseUrl+'/AuthorImage/'+author.picture_url" alt="{{ author.full_name }}" class="author-image"/>
+        <h3>{{ author.full_name }}</h3>
+        <p><strong>Birth:</strong> {{ author.birth_date }}</p>
+        <p class="bio">{{ author.bio_wikipediya | slice:0:150 }}...</p>
+      </nz-card>
+    </ng-container>
+  </div>
+</div>

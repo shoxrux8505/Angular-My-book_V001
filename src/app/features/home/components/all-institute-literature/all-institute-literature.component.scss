@@ -1,0 +1,135 @@
+// .categories-section {
+//   padding: 40px 0;
+//   font-family: Arial, sans-serif;
+//   background-color: #f9f9f9;
+//   min-height: 50vh;
+
+//   .container {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//   }
+
+//   .categories-container {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 100%;
+
+//     .scrolling-category-list {
+//       width: 100%;
+//       position: fixed;
+//       top: 80px;
+//       z-index: 1000;
+//       background: #fff;
+//       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//       // border-radius: 10px;
+
+//       .scrolling-wrapper {
+//         display: flex;
+//         gap: 15px;
+//       padding: 15px 20px;
+//       overflow-x: auto;
+//         white-space: nowrap;
+//         // animation: scrollLeft 10s linear infinite;
+
+//         &::-webkit-scrollbar {
+//           height: 6px;
+//         }
+
+//         &::-webkit-scrollbar-thumb {
+//           background: #d1d1d1;
+//           border-radius: 4px;
+//         }
+
+//         .category-item {
+//           flex: 0 0 auto;
+//           padding: 10px 20px;
+//           background: #f3f4f6;
+//           border-radius: 5px;
+//           text-align: center;
+//           font-weight: bold;
+//           color: #333;
+//           cursor: pointer;
+//           transition: background-color 0.3s, transform 0.3s;
+
+//           &:hover {
+//             background: #e3e7f1;
+//             transform: translateY(-5px);
+//           }
+
+//           &.selected {
+//             background: #4a90e2;
+//             color: #fff;
+//           }
+//         }
+//       }
+//     }
+
+//     .category-detail {
+//       margin-top: 140px;
+//       width: 100%;
+//       max-width: 1400px;
+//       padding: 20px;
+//       background: #fff;
+//       border-radius: 10px;
+//       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+//       h2 {
+//         font-size: 24px;
+//         margin-bottom: 20px;
+//         color: #333;
+//       }
+
+//       .books-list {
+//         display: flex;
+//         flex-wrap: wrap;
+//         gap: 20px;
+
+//         .book-card {
+//           width: 180px;
+//           padding: 15px;
+//           background: #fff;
+//           border-radius: 10px;
+//           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//           text-align: center;
+//           transition: transform 0.3s ease, box-shadow 0.3s ease;
+//           cursor: pointer;
+
+//           &:hover {
+//             transform: translateY(-10px);
+//             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+//           }
+
+//           img {
+//             width: 100%;
+//             height: 240px;
+//             object-fit: cover;
+//             border-radius: 8px;
+//           }
+
+//           h3 {
+//             margin-top: 10px;
+//             font-size: 18px;
+//             color: #333;
+//           }
+
+//           p {
+//             margin-top: 5px;
+//             font-size: 14px;
+//             color: #555;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   @keyframes scrollLeft {
+//     from {
+//       transform: translateX(0);
+//     }
+//     to {
+//       transform: translateX(-100%);
+//     }
+//   }
+// }

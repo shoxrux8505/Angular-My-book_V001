@@ -1,0 +1,35 @@
+<section class="profile-section">
+  <div class="container">
+    <ng-container *ngIf="user; else loading">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <img [src]="userPicture" [alt]="user && user.full_name"/>
+        </div>
+        <div class="profile-info">
+          <h1>{{ user && user.full_name }}</h1>
+          <p class="bio">
+            <strong>Telefon raqam:</strong> {{ user && user.phone_number }}
+            <br>
+            <strong>Email:</strong> {{ user && user.email }}
+            <br>
+            <strong>Manzil:</strong> {{ user && user.country_name }}
+            <br>
+            <strong>Ro'yhatdan o'tgan sana:</strong> {{ user && user.created_at.split('T')[0] }} {{ user && createdAt }}
+            <br>
+          </p>
+          <button class="edit-profile-btn">Edit Profile</button>
+        </div>
+      </div>
+
+      <div class="favorite-books">
+        <h2>Yoqgan kitoblar</h2>
+        <app-book-cards-mini [books]="favoriteBooks"></app-book-cards-mini>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <p>Loading...</p>
+    </ng-template>
+
+  </div>
+</section>

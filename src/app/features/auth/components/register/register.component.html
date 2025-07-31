@@ -1,0 +1,177 @@
+<div id="container" class="container2" [ngClass]="{ 'sign-in': isSignIn, 'sign-up': !isSignIn }">
+  <!-- FORM SECTION -->
+  <div class="row">
+    <!-- SIGN UP -->
+    <div class="col align-items-center flex-col sign-up">
+      <div class="form-wrapper align-items-center">
+        <div class="form sign-up">
+          <div class="input-group">
+            <i class='bx bxs-user' [ngClass]="{ 'changeTop': fullName.invalid && fullName.touched }"></i>
+            <input 
+              type="text" 
+              placeholder="F.I.SH" 
+              [(ngModel)]="registerData.full_name" 
+              name="full_name" 
+              required 
+              minlength="3" 
+              #fullName="ngModel">
+            <span class="error" *ngIf="fullName.invalid && fullName.touched">
+              To'liq ismni kiriting (kamida 3 ta harf)
+            </span>
+          </div>
+          <div class="input-group">
+             <i class='bx bx-phone' [ngClass]="{ 'changeTop1': phoneNumber.invalid && phoneNumber.touched }"></i>
+            <input 
+              type="tel" 
+              placeholder="Telefon Raqamingiz" 
+              [(ngModel)]="registerData.phone_number" 
+              name="phone_number" 
+              required 
+              pattern="^[0-9]{9,12}$" 
+              #phoneNumber="ngModel">
+            <span class="error" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+              Telefon raqam noto‘g‘ri! 889995566
+            </span>
+          </div>
+          <div class="input-group">
+            <i class='bx bx-mail-send' [ngClass]="{ 'changeTop2': email.invalid && email.touched }"></i>
+            <input 
+              type="email" 
+              placeholder="Emailingiz" 
+              [(ngModel)]="registerData.email" 
+              name="email" 
+              required 
+              email 
+              #email="ngModel">
+            <span class="error" *ngIf="email.invalid && email.touched">
+              To‘g‘ri emailni kiriting!
+            </span>
+          </div>
+          <div class="input-group select">
+            <i class='bx bx-globe' [ngClass]="{ 'changeTop3': countryId.invalid && countryId.touched }"></i>
+            <select 
+              [(ngModel)]="registerData.country_id" 
+              name="country_id" 
+              required 
+              #countryId="ngModel">
+              <option disabled selected value="0">Viloyatni tanlang</option>
+              <option *ngFor="let country of countriesList" [value]="country.id">
+                {{country.name}}
+              </option>
+            </select>
+            <span class="error" *ngIf="countryId.invalid && countryId.touched">
+              Viloyatni tanlang!
+            </span>
+          </div>
+          <div class="input-group">
+            <i class='bx bxs-lock-alt' [ngClass]="{ 'changeTop4': password.invalid && password.touched }"></i>
+            <input 
+              type="password" 
+              placeholder="Parolni kiriting" 
+              [(ngModel)]="registerData.password" 
+              name="password" 
+              required 
+              minlength="6" 
+              #password="ngModel">
+            <span class="error" *ngIf="password.invalid && password.touched">
+              Parol kamida 6 ta belgi bo‘lishi kerak!
+            </span>
+          </div>
+          <div class="input-group">
+            <i class='bx bxs-lock-alt' [ngClass]="{ 'changeTop5': confirmPassword.invalid && confirmPassword.touched }"></i>
+            <input 
+              type="password" 
+              placeholder="Parolni qayta kiriting" 
+              [(ngModel)]="confirmPassword" 
+              name="confirmPassword" 
+              required 
+              #confirmPassword="ngModel">
+            <span class="error" *ngIf="confirmPassword.value !== registerData.password && confirmPassword.touched && confirmPassword.invalid">
+              Parol mos emas!
+            </span>
+          </div>
+          <button 
+            (click)="register()" 
+            [disabled]="fullName.invalid || phoneNumber.invalid || email.invalid || countryId.invalid || password.invalid || confirmPassword.value !== registerData.password">
+            Ro'yhatdan o'tish
+          </button>
+          <p>
+            <span *ngIf="errorMessage" class="error">{{errorMessage}}</span>
+            <br>
+            <span>Akkauntingiz bormi? </span>
+            <b (click)="toggle()" class="pointer">Kirish</b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END SIGN UP -->
+    <!-- SIGN IN -->
+    <div class="col align-items-center flex-col sign-in">
+      <div class="form-wrapper align-items-center">
+        <div class="form sign-in">
+          <div class="input-group">
+            <i class='bx bxs-user' [ngClass]="{ 'changeTop6': loginEmail.invalid && loginEmail.touched }"></i>
+            <input 
+              type="email" 
+              placeholder="Email" 
+              [(ngModel)]="loginDTO.email" 
+              name="email" 
+              required 
+              email 
+              #loginEmail="ngModel">
+            <span class="error" *ngIf="loginEmail.invalid && loginEmail.touched">
+              To‘g‘ri email kiriting!
+            </span>
+          </div>
+          <div class="input-group">
+            <i class='bx bxs-lock-alt' [ngClass]="{ 'changeTop7': loginPassword.invalid && loginPassword.touched }"></i>
+            <input 
+              type="password" 
+              placeholder="Parol" 
+              [(ngModel)]="loginDTO.password" 
+              name="password" 
+              required 
+              minlength="6" 
+              #loginPassword="ngModel">
+            <span class="error" *ngIf="loginPassword.invalid && loginPassword.touched">
+              Parol kamida 6 ta belgi bo‘lishi kerak!
+            </span>
+          </div>
+          <button 
+            (click)="login()" 
+            [disabled]="loginEmail.invalid || loginPassword.invalid">
+            Kirish
+          </button>
+          <!-- <p><b>Forgot password?</b></p> -->
+          <p>
+            <span>Akkauntingiz yo'qmi? </span>
+            <b (click)="toggle()" class="pointer">Ro'yhatdan o'ting!</b>
+            <br>
+            <br>
+            <a [routerLink]="['/']">Bosh  sahifaga qaytish</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END SIGN IN -->
+  </div>
+  <!-- END FORM SECTION -->
+  <!-- CONTENT SECTION -->
+  <div class="row content-row">
+    <!-- SIGN IN CONTENT -->
+    <div class="col align-items-center flex-col">
+      <div class="text sign-in">
+        <h2>Xush kelibsiz</h2>
+      </div>
+    </div>
+    <!-- END SIGN IN CONTENT -->
+    <!-- SIGN UP CONTENT -->
+    <div class="col align-items-center flex-col">
+      <div class="text sign-up">
+        <h2>Bizga qo'shiling</h2>
+      </div>
+    </div>
+    <!-- END SIGN UP CONTENT -->
+  </div>
+  <!-- END CONTENT SECTION -->
+</div>

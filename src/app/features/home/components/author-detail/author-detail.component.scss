@@ -1,0 +1,50 @@
+.card-wrapper{
+  padding-top: 150px;
+}
+.author-detail-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.author-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.author-info h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.bio {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* 🔹 Mobilga moslashuv */
+@media (max-width: 600px) {
+  .author-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .author-image {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -1,0 +1,69 @@
+    .container {
+      max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.author-card {
+  width: 280px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  background: #fff;
+}
+
+.author-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.author-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+h3 {
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+}
+
+.bio {
+  font-style: italic;
+  color: #777;
+}
+
+/* 🔹 Mobilga moslashtirish */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .author-card {
+    width: 90%;
+  }
+}

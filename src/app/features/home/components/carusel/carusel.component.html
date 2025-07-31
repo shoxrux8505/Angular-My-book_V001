@@ -1,0 +1,33 @@
+<section class="event-section" id="event">
+  <div class="container">
+    <div
+      class="carousel-container"
+      >
+      <!-- (mouseenter)="stopAutoPlay()"
+      (mouseleave)="startAutoPlay()" -->
+      <h2 style="font-size: 40px; padding-bottom: 20px">Tadbirlar</h2>
+      <div class="carousel-track" #carouselTrack>
+        <div class="carousel-slide" *ngFor="let image of images">
+          <div class="book-fair-container">
+            <!-- Chap tomonda kitoblar ro‘yxati -->
+            <div class="books-image">
+              <img src="../../../../../assets/imgs/image.png" alt="" />
+            </div>
+            <!-- O'ng tomonda tadbir ma'lumotlari -->
+            <div class="event-info">
+              <h2>Online Book Fairs 2022</h2>
+              <p>
+                In a country teetering on the brink of civil war, two young
+                people meet—sensual, fiercely independent Nadia and gentle,
+                restrained Saeed. The unrest roiling their city.
+              </p>
+              <!-- <button class="create-account-btn">Create Account</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn prev" (click)="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-btn next" (click)="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+<div *ngIf="showErrorModal">
+  <app-error-report [errorMessage]="errorMessage" (onClose)="closeModal()"></app-error-report>
+</div>
+
+<!-- Boshqa sahifa kontenti -->
+<router-outlet></router-outlet>
+
+
+<router-outlet></router-outlet> <!-- Faqat routing o'rni -->

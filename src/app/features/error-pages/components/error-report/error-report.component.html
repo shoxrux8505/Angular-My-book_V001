@@ -1,0 +1,10 @@
+<div class="error-modal">
+  <div class="modal-content">
+    <h2>Xato haqida hisobot</h2>
+    <textarea [(ngModel)]="errorMessage" placeholder="Xato tafsilotlarini kiriting..."></textarea>
+    <div class="modal-actions">
+      <button (click)="sendReport()">Yuborish</button>
+      <button (click)="closeModal()">Bekor qilish</button>
+    </div>
+  </div>
+</div>

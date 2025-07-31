@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="all-books-container">
+    <h2>Saralangan kitoblar</h2>
+    <div class="book-cards">
+      <div class="book-card" *ngFor="let book of books">
+        <img [src]="getBookImageUrl(book)"
+             alt="{{ book.name }}" class="book-image"
+             [routerLink]="['/book-detail', book.id]"
+        />
+        <h3 [routerLink]="['/book-detail', book.id]">{{ book.name }}</h3>
+        <p [routerLink]="['/book-detail', book.id]">{{ book.type }}</p>
+        <!-- Yoqgan kitoblar tugmasi -->
+        <button (click)="toggleFavorite(book)" class="favorite-button">
+          <i [class]="getBookmarkIcon(book)"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
